@@ -213,7 +213,7 @@
                                             }
                                         }
                                     }
-                                }, [t._v(e.row.yarnAppId)]), t._v(" ")]
+                                }, [t._v(e.row.yarnAppId || '-')]), t._v(" ")]
                             }
                         }])
                     }), t._v(" "), a("el-table-column", {
