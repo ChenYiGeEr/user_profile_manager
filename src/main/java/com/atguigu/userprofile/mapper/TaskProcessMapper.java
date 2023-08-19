@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author zhangchen
@@ -28,6 +28,6 @@ public interface TaskProcessMapper extends BaseMapper<TaskProcess> {
             "    SELECT batch_id  FROM task_process  WHERE task_exec_status IN ('START','SUBMITTED' ,'RUNNING' )\n" +
             " )\n" +
             " AND task_exec_time<= #{curTime} AND task_exec_status ='TODO'")
-    public List<TaskProcess > getTodoTaskProcessList( @Param("curTime") String curTime ) ;
+    List<TaskProcess> getTodoTaskProcessList(@Param("curTime") String curTime);
 
 }

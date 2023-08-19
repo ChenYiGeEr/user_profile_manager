@@ -7,13 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author zhangchen
@@ -25,36 +24,23 @@ import java.io.Serializable;
 public class TagInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private Date createTime;
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
-
-    private String tagCode;
-
-    private String tagName;
-
-    private Long tagLevel;
-
-    private Long parentTagId;
-
-    @TableField(exist = false)
-    private Long parentTagLevel;
-
     @TableField(exist = false)
     private String parentTagCode;
-
+    private Long parentTagId;
+    @TableField(exist = false)
+    private Long parentTagLevel;
     @TableField(exist = false)
     private String parentTagName;
-
-    private String tagValueType;
-
-
-    private String tagType;
-
-    private Long tagTaskId;
-
+    private String tagCode;
     private String tagComment;
-
-    private Date createTime;
+    private Long tagLevel;
+    private String tagName;
+    private Long tagTaskId;
+    private String tagType;
+    private String tagValueType;
     @TableField(exist = false)
     private String taskStatus;
 

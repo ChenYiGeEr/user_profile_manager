@@ -21,7 +21,7 @@ import static com.atguigu.userprofile.constants.ConstCodes.*;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zhangchen
@@ -38,18 +38,18 @@ public class TaskProcessServiceImpl extends ServiceImpl<TaskProcessMapper, TaskP
     TaskProcessMapper taskProcessMapper;
 
 
-    public void updateStatus(Long taskProcessId,String status){
-        updateStatus( taskProcessId, null,  status);
+    public void updateStatus(Long taskProcessId, String status) {
+        updateStatus(taskProcessId, null, status);
     }
 
-    public void updateStatus(Long taskProcessId ,String yarnAppId,String status){
+    public void updateStatus(Long taskProcessId, String yarnAppId, String status) {
         TaskProcess taskProcess = new TaskProcess();
         taskProcess.setId(taskProcessId);
         taskProcess.setTaskExecStatus(status);
         taskProcess.setYarnAppId(yarnAppId);
-        if(status.equals(TASK_EXEC_STATUS_START  )){
+        if (status.equals(TASK_EXEC_STATUS_START)) {
             taskProcess.setStartTime(new Date());
-        }else if(status.equals( TASK_EXEC_STATUS_FAILED)||status.equals( TASK_EXEC_STATUS_FINISHED)){
+        } else if (status.equals(TASK_EXEC_STATUS_FAILED) || status.equals(TASK_EXEC_STATUS_FINISHED)) {
             taskProcess.setEndTime(new Date());
         }
 
@@ -57,7 +57,7 @@ public class TaskProcessServiceImpl extends ServiceImpl<TaskProcessMapper, TaskP
     }
 
 
-    public void genTaskProcess(String taskDate){
+    public void genTaskProcess(String taskDate) {
 
         List<TaskInfo> taskInfoList = taskInfoService.list(new QueryWrapper<TaskInfo>().eq("task_status", ConstCodes.TASK_STATUS_ON));
         String batchId = UUID.randomUUID().toString();
@@ -80,10 +80,9 @@ public class TaskProcessServiceImpl extends ServiceImpl<TaskProcessMapper, TaskP
     }
 
 
-    public  List<TaskProcess>   getTodoTaskProcessList( String taskTime){
-        return taskProcessMapper.getTodoTaskProcessList( taskTime);
+    public List<TaskProcess> getTodoTaskProcessList(String taskTime) {
+        return taskProcessMapper.getTodoTaskProcessList(taskTime);
     }
-
 
 
 }

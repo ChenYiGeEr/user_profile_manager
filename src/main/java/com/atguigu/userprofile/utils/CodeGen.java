@@ -28,7 +28,7 @@ public class CodeGen {
         gc.setAuthor("zhangchen");// 作者
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-      //  gc.setControllerName("%sController");
+        //  gc.setControllerName("%sController");
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
         gc.setMapperName("%sMapper");
@@ -50,9 +50,9 @@ public class CodeGen {
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "file_info"   }); // 需要生成的表
+        strategy.setInclude("file_info"); // 需要生成的表
         strategy.setSuperMapperClass(null);
-        strategy.setSuperServiceClass("" );
+        strategy.setSuperServiceClass("");
         strategy.setSuperServiceImplClass("");
 
         mpg.setStrategy(strategy);

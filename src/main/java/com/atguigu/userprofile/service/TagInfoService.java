@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author zhangchen
@@ -16,12 +16,12 @@ import java.util.Map;
  */
 public interface TagInfoService extends IService<TagInfo> {
 
-    public List<TagInfo> getTagInfoAllWithStatus();
+    List<TagInfo> getTagInfoAllWithStatus();
 
-    public TagInfo getTagInfo(Long taskId);
+    TagInfo getTagInfo(Long taskId);
 
-    public List<TagInfo> getTagValueList(String parentTagCode);
+    List<TagInfo> getTagValueList(String parentTagCode);
 
-    public Map<String,TagInfo> getTagInfoMapWithCode();
+    Map<String, TagInfo> getTagInfoMapWithCode();
 
 }

@@ -1,1 +1,8 @@
-.dashboard-container[data-v-2b776410]{margin:30px}.dashboard-text[data-v-2b776410]{font-size:30px;line-height:46px}
+.dashboard-container[data-v-2b776410] {
+    margin: 30px
+}
+
+.dashboard-text[data-v-2b776410] {
+    font-size: 30px;
+    line-height: 46px
+}

@@ -1,15 +1,22 @@
 package com.atguigu.userprofile.service;
 
 import com.atguigu.userprofile.bean.UserGroup;
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.springframework.scheduling.annotation.Async;
 
-public interface UserGroupService  extends IService<UserGroup> {
+public interface UserGroupService extends IService<UserGroup> {
 
-        public void genUserGroup(UserGroup userGroup);
+    void genUserGroup(UserGroup userGroup);
 
-        public Long evaluateUserGroup(UserGroup userGroup);
+    /***
+     * 方法：evaluateUserGroup
+     * <p>计算分群人数 </p>
+     *
+     * @param userGroup 分群信息
+     * @return java.lang.Long 分群人数
+     * @since 2023/8/19 20:41
+     * @author lim
+     */
+    Long evaluateUserGroup(UserGroup userGroup);
 
-        public void   refreshUserGroup(String userGroupId,String busiDate);
+    void refreshUserGroup(String userGroupId, String busiDate);
 }

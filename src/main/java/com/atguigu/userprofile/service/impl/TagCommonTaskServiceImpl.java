@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zhangchen
@@ -25,14 +25,14 @@ public class TagCommonTaskServiceImpl extends ServiceImpl<TagCommonTaskMapper, T
     @Autowired
     FileInfoService fileInfoService;
 
-    public  TagCommonTask getTagCommonTaskWithJarFile(Long id){
-        TagCommonTask tagCommonTask =   getById(id);
-        if(tagCommonTask!=null){
+    public TagCommonTask getTagCommonTaskWithJarFile(Long id) {
+        TagCommonTask tagCommonTask = getById(id);
+        if (tagCommonTask != null) {
             FileInfo fileInfo = fileInfoService.getById(tagCommonTask.getTaskFileId());
             tagCommonTask.setFileInfo(fileInfo);
         }
 
-        return  tagCommonTask;
+        return tagCommonTask;
     }
 
 

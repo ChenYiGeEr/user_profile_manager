@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author zhangchen
@@ -16,11 +16,11 @@ import java.util.List;
 public interface TaskProcessService extends IService<TaskProcess> {
 
 
-    public void updateStatus(Long taskProcessId,String status);
+    void updateStatus(Long taskProcessId, String status);
 
-    public void updateStatus(Long taskProcessId,String yarnAppId,String status);
+    void updateStatus(Long taskProcessId, String yarnAppId, String status);
 
-    public void genTaskProcess(String taskDate);
+    void genTaskProcess(String taskDate);
 
-    public List<TaskProcess> getTodoTaskProcessList(  String taskTime);
+    List<TaskProcess> getTodoTaskProcessList(String taskTime);
 }

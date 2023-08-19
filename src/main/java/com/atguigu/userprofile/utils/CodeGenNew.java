@@ -9,9 +9,9 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 /**
- *  @author: haodongdong
- *  @Date: 2020/7/17
- *  @Description: MP自动生成
+ * @author: haodongdong
+ * @Date: 2020/7/17
+ * @Description: MP自动生成
  */
 public class CodeGenNew {
 
@@ -85,7 +85,7 @@ public class CodeGenNew {
         strategy.setNaming(NamingStrategy.underline_to_camel);
 
         // 需要生成的表
-        strategy.setInclude(new String[]{"file_info" });
+        strategy.setInclude("file_info");
 
         strategy.setEntityLombokModel(true);
 

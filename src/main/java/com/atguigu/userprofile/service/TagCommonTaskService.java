@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author zhangchen
@@ -14,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface TagCommonTaskService extends IService<TagCommonTask> {
 
 
-    public  TagCommonTask getTagCommonTaskWithJarFile(Long id);
+    TagCommonTask getTagCommonTaskWithJarFile(Long id);
 }

@@ -7,12 +7,12 @@ import java.util.List;
 @Data
 public class TagCondition {
 
-     String tagCode;
-     String tagName;
-     String operatorName;
-     String operator;
-     List<String> tagValues;
-     List<String> tagCodePath;
+    String tagCode;
+    String tagName;
+    String operatorName;
+    String operator;
+    List<String> tagValues;
+    List<String> tagCodePath;
 
 
 }

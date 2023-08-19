@@ -1,12 +1,12 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([
     ["d/+Y"], {
-        "d/+Y": function(t, e, a) {
+        "d/+Y": function (t, e, a) {
             "use strict";
             a.r(e);
             var s = a("t3Un"),
                 l = {
                     components: {},
-                    data: function() {
+                    data: function () {
                         return {
                             taskBusiDateVisible: !1,
                             tableData: [{}],
@@ -17,104 +17,106 @@
                             intervalId: null
                         }
                     },
-                    mounted: function() {
+                    mounted: function () {
                         this.init(), this.dataRefreh()
                     },
                     methods: {
-                        genTaskProcess: function() {
+                        genTaskProcess: function () {
                             var t = this;
                             return Object(s.a)({
                                 url: "/task-gen?busidt=" + this.taskBusiDate,
                                 method: "post"
-                            }).then(function(e) {
+                            }).then(function (e) {
                                 t.tableData = e.detail, t.total = e.total, t.closeDialog()
-                            }).catch(function(e) {
+                            }).catch(function (e) {
                                 console.log("失败" + e), t.$message.error("服务器错误，请稍后再试！ " + e)
                             })
                         },
-                        init: function() {
+                        init: function () {
                             this.curPageNo = 1, this.refreshTable()
                         },
-                        refreshTable: function() {
+                        refreshTable: function () {
                             var t = this;
                             return Object(s.a)({
                                 url: "/task-process-list?pageNo=" + this.curPageNo + "&pageSize=" + this.pageSize + " ",
                                 method: "get"
-                            }).then(function(e) {
+                            }).then(function (e) {
                                 console.log("response.detail:" + e.detail), t.tableData = e.detail, t.total = e.total
-                            }).catch(function(e) {
+                            }).catch(function (e) {
                                 console.log("失败" + e), t.$message.error("服务器错误，请稍后再试！ " + e)
                             })
                         },
-                        handleCurrentChange: function(t) {
+                        handleCurrentChange: function (t) {
                             this.refreshTable()
                         },
-                        closeDialog: function() {
+                        closeDialog: function () {
                             this.refreshTable(), this.taskBusiDateVisible = !1
                         },
-                        showDialogForTaskDate: function() {
+                        showDialogForTaskDate: function () {
                             this.taskBusiDateVisible = !0
                         },
-                        dataRefreh: function() {
+                        dataRefreh: function () {
                             var t = this;
-                            null == this.intervalId && (this.intervalId = setInterval(function() {
+                            null == this.intervalId && (this.intervalId = setInterval(function () {
                                 console.log("刷新" + new Date), t.init()
                             }, 5e3))
                         },
-                        clearTimer: function() {
+                        clearTimer: function () {
                             clearInterval(this.intervalId), this.intervalId = null
                         },
-                        dateFormat: function(t, e, a, s) {
+                        dateFormat: function (t, e, a, s) {
                             var l = t[e.property];
                             if (null != l) {
                                 var o = new Date(l);
                                 return o.getFullYear() + "/" + (o.getMonth() + 1) + "/" + o.getDate() + " " + o.getHours() + ":" + o.getMinutes() + ":" + o.getSeconds()
                             }
                         },
-                        retryTaskProcess: function(t) {
+                        retryTaskProcess: function (t) {
                             var e = this;
                             this.$confirm("确定重试该任务吗 ?", "提示", {
                                 confirmButtonText: "确定",
                                 cancelButtonText: "取消",
                                 type: "warning"
-                            }).then(function() {
+                            }).then(function () {
                                 return Object(s.a)({
                                     url: "/task-process-retry/" + t.id,
                                     method: "post"
-                                }).then(function(t) {
+                                }).then(function (t) {
                                     e.$message({
                                         type: "success",
                                         message: "重试任务!"
                                     }), e.refreshTable()
-                                }).catch(function(t) {
+                                }).catch(function (t) {
                                     console.log("失败" + t), e.$message.error("服务器错误，请稍后再试！ " + t)
                                 })
-                            }).catch(function() {})
+                            }).catch(function () {
+                            })
                         },
-                        deleteTaskProcess: function(t) {
+                        deleteTaskProcess: function (t) {
                             var e = this;
                             this.$confirm("确定删除该任务吗 ?", "提示", {
                                 confirmButtonText: "确定",
                                 cancelButtonText: "取消",
                                 type: "warning"
-                            }).then(function() {
+                            }).then(function () {
                                 return Object(s.a)({
                                     url: "/task-process/" + t.id,
                                     method: "delete"
-                                }).then(function(t) {
+                                }).then(function (t) {
                                     e.$message({
                                         type: "success",
                                         message: "删除成功!"
                                     }), e.refreshTable()
-                                }).catch(function(t) {
+                                }).catch(function (t) {
                                     console.log("失败" + t), e.$message.error("服务器错误，请稍后再试！ " + t)
                                 })
-                            }).catch(function() {})
+                            }).catch(function () {
+                            })
                         }
                     }
                 },
                 o = a("KHd+"),
-                n = Object(o.a)(l, function() {
+                n = Object(o.a)(l, function () {
                     var t = this,
                         e = t.$createElement,
                         a = t._self._c || e;
@@ -200,14 +202,14 @@
                         },
                         scopedSlots: t._u([{
                             key: "default",
-                            fn: function(e) {
+                            fn: function (e) {
                                 return [a("el-button", {
                                     attrs: {
                                         type: "text",
                                         size: "medium"
                                     },
                                     on: {
-                                        click: function(a) {
+                                        click: function (a) {
                                             if (e && e.row && e.row.yarnAppId) {
                                                 window.open(`http://hadoop102:18080/history/${e.row.yarnAppId}`)
                                             }
@@ -235,14 +237,14 @@
                         },
                         scopedSlots: t._u([{
                             key: "default",
-                            fn: function(e) {
+                            fn: function (e) {
                                 return [a("el-button", {
                                     attrs: {
                                         type: "text",
                                         size: "medium"
                                     },
                                     on: {
-                                        click: function(a) {
+                                        click: function (a) {
                                             t.retryTaskProcess(e.row)
                                         }
                                     }
@@ -252,7 +254,7 @@
                                         size: "medium"
                                     },
                                     on: {
-                                        click: function(a) {
+                                        click: function (a) {
                                             t.deleteTaskProcess(e.row)
                                         }
                                     }
@@ -269,7 +271,7 @@
                         },
                         on: {
                             "current-change": t.handleCurrentChange,
-                            "update:currentPage": function(e) {
+                            "update:currentPage": function (e) {
                                 t.curPageNo = e
                             }
                         }
@@ -279,7 +281,7 @@
                             visible: t.taskBusiDateVisible
                         },
                         on: {
-                            "update:visible": function(e) {
+                            "update:visible": function (e) {
                                 t.taskBusiDateVisible = e
                             }
                         }
@@ -295,7 +297,7 @@
                         },
                         model: {
                             value: t.taskBusiDate,
-                            callback: function(e) {
+                            callback: function (e) {
                                 t.taskBusiDate = e
                             },
                             expression: "taskBusiDate"

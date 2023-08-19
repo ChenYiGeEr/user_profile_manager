@@ -10,23 +10,15 @@ import redis.clients.jedis.JedisPoolConfig;
 public class RedisUtil {
 
 
-    public static   String  host;
-    public static   Integer  port;
-
-    @Value("${spring.redis.host}")
-    public void setHost(String host){
-        RedisUtil.host=host;
-    }
-    @Value("${spring.redis.port}")
-    public void setPort(Integer port){
-        RedisUtil.port=port;
-    }
+    public static String host;
+    public static Integer port;
+    static JedisPool jedisPool = null;
 
     public static void main(String[] args) {
-        Jedis jedis =  RedisUtil.getJedis();
+        Jedis jedis = RedisUtil.getJedis();
 
 
-        jedis.set("k10000","v10000");
+        jedis.set("k10000", "v10000");
 
         String value = jedis.get("k10000");
         System.out.println(value);
@@ -36,12 +28,8 @@ public class RedisUtil {
 
     }
 
-
-    static JedisPool jedisPool=null;
-
-
-    public static Jedis  getJedis(){
-        if(jedisPool==null){
+    public static Jedis getJedis() {
+        if (jedisPool == null) {
             JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
             jedisPoolConfig.setMaxTotal(100);
             jedisPoolConfig.setMinIdle(20);
@@ -50,12 +38,22 @@ public class RedisUtil {
             jedisPoolConfig.setMaxWaitMillis(1000);
             jedisPoolConfig.setTestOnBorrow(true);
 
-            jedisPool=new JedisPool(jedisPoolConfig,host,port);
+            jedisPool = new JedisPool(jedisPoolConfig, host, port);
             return jedisPool.getResource();
-        }else{
+        } else {
             return jedisPool.getResource();
         }
 
+    }
+
+    @Value("${spring.redis.host}")
+    public void setHost(String host) {
+        RedisUtil.host = host;
+    }
+
+    @Value("${spring.redis.port}")
+    public void setPort(Integer port) {
+        RedisUtil.port = port;
     }
 
 

@@ -17,12 +17,12 @@ public class TagOption {
 
     List<TagOption> children;
 
-    public TagOption(TagInfo tagInfo){
-         this.tagId = tagInfo.getId();
+    public TagOption(TagInfo tagInfo) {
+        this.tagId = tagInfo.getId();
         this.parentTagId = tagInfo.getParentTagId();
         this.label = tagInfo.getTagName();
         this.value = tagInfo.getTagCode();
-       // this.children= new ArrayList<>();
+        // this.children= new ArrayList<>();
     }
 
 }

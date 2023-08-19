@@ -1,14 +1,15 @@
 package com.atguigu.userprofile.utils;
 
-import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
-import com.baomidou.mybatisplus.generator.config.*;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import org.apache.commons.lang3.StringUtils;
 import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+import com.baomidou.mybatisplus.generator.config.PackageConfig;
+import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CodeGenerator {
@@ -20,9 +21,7 @@ public class CodeGenerator {
      */
     public static String scanner(String tip) {
         Scanner scanner = new Scanner(System.in);
-        StringBuilder help = new StringBuilder();
-        help.append("请输入" + tip + "：");
-        System.out.println(help.toString());
+        System.out.println("请输入" + tip + "：");
         if (scanner.hasNext()) {
             String ipt = scanner.next();
             if (StringUtils.isNotBlank(ipt)) {
@@ -61,7 +60,7 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-       // pc.setModuleName(scanner("模块名"));
+        // pc.setModuleName(scanner("模块名"));
         pc.setParent("com.atguigu.userprofile");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
@@ -70,19 +69,18 @@ public class CodeGenerator {
         mpg.setPackageInfo(pc);
 
 
-
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-       // strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+        // strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
-       //  strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
+        //  strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
-      //  strategy.setSuperEntityColumns("id");
-        strategy.setInclude(new String[] { "user_group"    }); // 需要生成的表
+        //  strategy.setSuperEntityColumns("id");
+        strategy.setInclude("user_group"); // 需要生成的表
         strategy.setControllerMappingHyphenStyle(true);
         //strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);

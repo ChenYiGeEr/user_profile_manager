@@ -12,9 +12,9 @@ import java.util.Map;
 @NoArgsConstructor
 public class SubmitEvent {
 
-   Long taskProcessId;
+    Long taskProcessId;
 
-   Long taskId;
+    Long taskId;
 
     String appName;
 
@@ -26,9 +26,9 @@ public class SubmitEvent {
 
     String deployMode;
 
-    Map<String,String> sparkArgs;
+    Map<String, String> sparkArgs;
 
-    Map<String,String> sparkConf;
+    Map<String, String> sparkConf;
 
     List<String> appArgs;
 
