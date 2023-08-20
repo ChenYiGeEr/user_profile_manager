@@ -73,7 +73,10 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
         String[] uidArr = userIdsList.toArray(new String[]{});   //把list转为数组
         String key = "user_group:" + userGroup.getId();
         jedis.del(key);    // 每次新建人群包时要清理旧的
-        jedis.sadd(key, uidArr);  //批量提交
+        if (uidArr.length > 0) {
+            //批量提交
+            jedis.sadd(key, uidArr);
+        }
         jedis.close();
 
         // 4获得个数 更新到mysql中
@@ -116,6 +119,30 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
         //更新clickhouse  redis  人数
         genUserGroup(userGroup);
 
+    }
+
+    /**
+     * 方法：removeUserGroup
+     * <p>根据用户群id删除用户群</p>
+     *
+     * @param userGroupId 用户群id
+     * @author lim
+     * @since 2023/8/20 18:19
+     */
+    @Override
+    public void removeUserGroup(String userGroupId) {
+        // 1. 请求参数校验
+        if (StringUtils.isBlank(userGroupId)) {
+            throw new RuntimeException("userGroupId cannot be empty!");
+        }
+        // 2. 删除mysql中该组信息
+        baseMapper.deleteById(userGroupId);
+        // 3. 删除redis中该组信息
+        Jedis jedis = RedisUtil.getJedis();
+        jedis.del("user_group:" + userGroupId);
+        jedis.close();
+        // 4. 删除clickhouse中该组信息
+        baseMapper.deleteUserCountById(userGroupId);
     }
 
     //insert into  user_group

@@ -70,6 +70,21 @@ public class UserGroupController {
         return "success";
     }
 
+    /**
+     * 方法：removeUserGroup
+     * <p>根据用户群id删除用户群</p>
+     *
+     * @param userGroupId 用户群id
+     * @return java.lang.String
+     * @author lim
+     * @since 2023/8/20 18:18
+     */
+    @DeleteMapping("/user-group-remove/{id}")
+    public String removeUserGroup(@PathVariable("id") String userGroupId) {
+        userGroupService.removeUserGroup(userGroupId);
+        return "success";
+    }
+
 
 }
 

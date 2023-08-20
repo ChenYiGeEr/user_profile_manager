@@ -19,4 +19,14 @@ public interface UserGroupService extends IService<UserGroup> {
     Long evaluateUserGroup(UserGroup userGroup);
 
     void refreshUserGroup(String userGroupId, String busiDate);
+
+    /**
+     * 方法：removeUserGroup
+     * <p>根据用户群id删除用户群</p>
+     *
+     * @param userGroupId 用户群id
+     * @author lim
+     * @since 2023/8/20 18:19
+     */
+    void removeUserGroup(String userGroupId);
 }

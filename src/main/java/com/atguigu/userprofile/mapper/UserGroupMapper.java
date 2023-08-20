@@ -40,7 +40,7 @@ public interface UserGroupMapper extends BaseMapper<UserGroup> {
 
 
     @DS("clickhouse")
-    @Delete("alter table  user_group  delete where user_group_id =#{id}")
+    @Delete("alter table user_group delete where user_group_id = #{id}")
     Long deleteUserCountById(@Param("id") String id);
 
 }
